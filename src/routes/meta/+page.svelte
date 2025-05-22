@@ -7,8 +7,9 @@
         offset,
     } from '@floating-ui/dom';
     import Bar from '$lib/Bar.svelte';
+    import FileLines from "$lib/FileLines.svelte";
     
-    
+
     let data = [];
     let commits = [];
     let width = 1000, height = 600;
@@ -195,10 +196,14 @@
         <dd>{d3.groups(filteredData, d => d.commit).length}</dd>
         </dl>	
     </section>
+
+    
+    <FileLines lines={filteredData} width={width}/>
+
     
     <h3>Commits by time and day</h3>
     
-    <svg viewBox="0 0 {width} {height}">
+    <!-- <svg viewBox="0 0 {width} {height}">
         <g transform="translate(0, {usableArea.bottom})" bind:this={xAxis} />
         <g transform="translate({usableArea.left}, 0)" bind:this={yAxis} />
     
@@ -219,7 +224,7 @@
                 />
             {/each}
         </g>		
-    </svg>
+    </svg> -->
     
     <Bar data={languageBreakdown} width={width} />
     
